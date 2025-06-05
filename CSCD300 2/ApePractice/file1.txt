@@ -1,0 +1,5 @@
+File IO seems fun.
+
+I love Java!
+3.134,22
+Today is: 02/09/2023

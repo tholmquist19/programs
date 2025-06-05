@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OnlyFoods</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>OnlyFoods</h1>
+  </header>
+
+  <main>
+    <section id="feed">
+      {% for post in posts %}
+        {% set user = users[post.username] %}
+        {% if post.username == 'Pasta_Slurper' %}
+          <div class="reveal-container">
+            <button class="reveal-btn" onclick="revealPost(this)">WARNING: Not Safe For Waistlines.  $45</button>
+            <div class="post blurred">
+        {% else %}
+            <div class="post">
+        {% endif %}
+          <div class="post-header">
+            <a href="{{ url_for('user_profile', username=post.username) }}">
+              <img class="avatar" src="{{ user.avatar }}" alt="{{ user.name }}">
+            </a>
+            <strong>
+              <a href="{{ url_for('user_profile', username=post.username) }}">
+                {{ user.name }}
+              </a>
+            </strong>
+          </div>
+
+          {% if post.content %}
+            <p>{{ post.content }}</p>
+          {% endif %}
+
+          {% if post.image %}
+            <img src="{{ post.image }}" alt="Post Image" />
+          {% endif %}
+
+          <small>{{ post.timestamp }}</small>
+
+          {% if post.comments %}
+            <div class="comments">
+              {% for comment in post.comments %}
+                <div class="comment">
+                  <strong>
+                    <a href="{{ url_for('user_profile', username=comment.user) }}">
+                      {{ comment.user }}
+                    </a>
+                  </strong>: {{ comment.text }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+      {% if post.username == 'Pasta_Slurper' %}
+            </div>
+          </div>
+        {% else %}
+            </div>
+        {% endif %}
+      {% endfor %}
+    </section>
+  </main>
+  <script>
+    function revealPost(button) {
+      const container = button.closest(".reveal-container");
+      const blurredPost = container.querySelector(".post");
+      blurredPost.classList.remove("blurred");
+      blurredPost.classList.add("revealed");
+      button.remove();
+    }
+  </script>
+</body>
+</html>
+
+
+
+

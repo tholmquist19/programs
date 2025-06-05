@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Lab2-Enum">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lab1.cscd210utils.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lab1.cscd210utils.doc.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

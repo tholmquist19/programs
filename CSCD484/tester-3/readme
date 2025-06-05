@@ -1,0 +1,8 @@
+Make sure to place the tester.py and both npz files in the same directory as the 'code_logistic_regression' and 'code_misc' folders
+
+Please note, that I got the results from making the model's input deterministic rather than random:
+
+1. 0 initialization of the weights.
+2. The input data was not shuffled.
+
+If you are getting errors due to shuffling the data, this is to be expected within reason.
